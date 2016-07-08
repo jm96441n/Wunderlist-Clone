@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :todo_lists
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  # root to: "users#new"
+  # get "/auth/:provider/callback" => "sessions#create"
+  # get "/signout" => "sessions#destroy", :as => :signoutß
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
