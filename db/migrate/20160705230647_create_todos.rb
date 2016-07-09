@@ -4,7 +4,7 @@ class CreateTodos < ActiveRecord::Migration
   		t.string :name, null: false
   		t.text :description, null: false
   		t.string :status, default: "Not Started"
-  		t.belongs_to :todolist, null: false
+  		t.belongs_to :todo_list, null: false
   		t.belongs_to :user, null: false
       t.timestamps null: false
     end

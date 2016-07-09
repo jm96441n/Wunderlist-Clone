@@ -1,5 +1,9 @@
 <h1><%= "#{@todo_list.name}" %></h1>
 
+<p>Todo's</p>
+	<% @todo_list.todos.each do |todo| %>
+		<li><%= link_to "#{todo.name}", todo_path %></li>
+	<% end %>
 
 <%= link_to "Add a Todo Item", new_todos_path %>
 <%= link_to "Home", todo_lists_path %>

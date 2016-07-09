@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
-
+  has_many :todos 
+  has_many :todo_lists
 
   def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.id).first_or_create do |user|

@@ -16,7 +16,7 @@ class TodoListsController < ApplicationController
 	end
 
 	def show
-		@todo_list = TodoList.find(params[:id])
+		@todo_list = TodoList.includes(:todos).find(params[:id])
 		session[:todo_list] = @todo_list.id		
 	end
 
