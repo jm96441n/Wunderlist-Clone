@@ -15,6 +15,11 @@ class TodoListsController < ApplicationController
 		end
 	end
 
+	def show
+		@todo_list = TodoList.find(params[:id])
+		
+	end
+
 	def update
 	end
 
@@ -24,7 +29,7 @@ class TodoListsController < ApplicationController
 private
 
 	def todo_list_params
-		params[:todo_list].permit(:name)
+		params[:todo_list].permit(:name, :user_id)
 	end
 
 end

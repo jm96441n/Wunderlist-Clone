@@ -7,13 +7,11 @@ feature "AddNewLists", :type => :feature do
 		
 		visit new_todo_list_path
 
-		click_button "Log in"
-
 		within "#new_todo_list" do
 			fill_in "todo_list_name", with: "Todo List Test"
 		end
 
-		click_link_or_button "Create Todo List"
+		click_button "Create Todo List"
 
 		expect( TodoList.count ).to eq(1)
 		expect( TodoList.first.name ).to eq( "Todo List Test" )
