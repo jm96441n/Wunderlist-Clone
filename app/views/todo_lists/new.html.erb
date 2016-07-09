@@ -1,0 +1,8 @@
+<h1>Make a New Todo List</h1>
+
+<%= form_for @todo_list do |f| %>
+	<%= f.label "Name of List: " %>
+	<%= f.text_field :name %>
+	<%= f.hidden_field :user_id %>
+	<%= f.submit %>
+<% end %>

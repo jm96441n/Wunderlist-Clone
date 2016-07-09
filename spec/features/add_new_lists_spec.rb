@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "AddNewLists", :type => :feature do
-	it 'should create a new list with a logged in user' do
+	it 'should allow a logged in user create a new todo list' do
 		
 		login_as create( :user ), scope: :user
 		

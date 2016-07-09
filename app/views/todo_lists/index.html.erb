@@ -1,1 +1,9 @@
 <h1>Welcome <%= "#{current_user.name}" %></h1>
+
+<p>Your Lists</p>
+<% @lists.each do |list| %>
+	<li><%= link_to "#{list.name}", todo_list_path(list) %></li>
+<% end %>
+
+
+<%= link_to "Add A Todo List", new_todo_list_path %>
