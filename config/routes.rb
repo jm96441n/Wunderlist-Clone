@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'todo_lists#index'
   resources :todo_lists
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  resources :todos
+  devise_for :users, :controllers => { 
+    :omniauth_callbacks => "users/omniauth_callbacks",
+    registrations: 'registrations'
+   }
+
 
   # root to: "users#new"
   # get "/auth/:provider/callback" => "sessions#create"

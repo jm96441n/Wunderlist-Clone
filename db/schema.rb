@@ -23,13 +23,6 @@ ActiveRecord::Schema.define(version: 20160705232813) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "todo_list_todos", force: :cascade do |t|
-    t.integer  "todo_list_id", null: false
-    t.integer  "todo_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "todo_lists", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "user_id",    null: false
@@ -42,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160705232813) do
     t.text     "description",                         null: false
     t.string   "status",      default: "Not Started"
     t.integer  "todolist_id",                         null: false
+    t.integer  "user_id",                             null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
