@@ -25,8 +25,10 @@ class TodoListsController < ApplicationController
 	end
 
 	def update
-		# @todo_list = TodoList.find(params[:id])
-		# @todo_list.update(name: params[:name])
+		@todo_list = TodoList.find(params[:id])
+		if @todo_list.update(todo_list_params)
+			redirect_to @todo_list
+		end
 	end
 
 	def destroy

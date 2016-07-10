@@ -34,7 +34,7 @@ RSpec.describe TodoListsController, :type => :controller do
 		end
 		it 'Show: should let a user view a single Todo List' do
 			u = create(:user)
-			t_l = FactoryGirl.create(:todolist, user_id: u.id)
+			t_l = FactoryGirl.create(:todo_list, user_id: u.id)
 			get :show, id: t_l.id
 			expect( response ).to render_template( :show )
 		end
@@ -45,7 +45,7 @@ RSpec.describe TodoListsController, :type => :controller do
 
 		it "Edit: should allow a user to view the form to edit a Todo List" do
 			u = create(:user)
-			t_l = FactoryGirl.create(:todolist, user_id: u.id)
+			t_l = FactoryGirl.create(:todo_list, user_id: u.id)
 			get :edit, id: t_l.id
 			expect( response ).to render_template(:edit)
 		end

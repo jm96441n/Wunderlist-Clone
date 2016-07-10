@@ -11,7 +11,7 @@ feature "AddNewLists", :type => :feature do
 			fill_in "todo_list_name", with: "Todo List Test"
 		end
 
-		click_button "Create Todo List"
+		click_button "Create Todo list"
 
 		expect( TodoList.count ).to eq(1)
 		expect( TodoList.first.name ).to eq( "Todo List Test" )

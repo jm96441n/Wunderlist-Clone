@@ -4,6 +4,13 @@
 	<% @todo_list.todos.each do |todo| %>
 		<li><%= link_to "#{todo.name}", todo_path %></li>
 	<% end %>
-
+	
+<div>
 <%= link_to "Add a Todo Item", new_todo_path %>
+</div>
+<div>
+<%= link_to "Edit", edit_todo_list_path %>
+</div>
+<div>
 <%= link_to "Home", todo_lists_path %>
+</div>	
