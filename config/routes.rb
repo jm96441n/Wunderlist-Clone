@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'todo_lists#index'
   resources :todo_lists
-  resources :todos
+  resources :todos, except: :index
   devise_for :users, :controllers => { 
     :omniauth_callbacks => "users/omniauth_callbacks",
     registrations: 'registrations'

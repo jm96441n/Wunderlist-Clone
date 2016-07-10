@@ -20,7 +20,13 @@ class TodoListsController < ApplicationController
 		session[:todo_list] = @todo_list.id		
 	end
 
+	def edit
+		@todo_list = TodoList.find(params[:id])
+	end
+
 	def update
+		# @todo_list = TodoList.find(params[:id])
+		# @todo_list.update(name: params[:name])
 	end
 
 	def destroy

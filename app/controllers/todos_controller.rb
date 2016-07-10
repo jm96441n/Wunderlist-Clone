@@ -1,7 +1,5 @@
 class TodosController < ApplicationController
 
-	def index
-	end
 
 	def new
 		@todo = Todo.new
@@ -14,6 +12,12 @@ class TodosController < ApplicationController
 		end
 	end
 
+	def update
+	end
+
+	def destroy
+	end
+	
 	private
 
 	def todo_params
