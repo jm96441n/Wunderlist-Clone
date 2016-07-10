@@ -6,8 +6,12 @@ RSpec.describe TodosController, :type => :controller do
 		before :each do
 			login_with nil
 		end
-
+		it 'New: should be redirected to signin page' do
+			get :new
+			expect( response ).to redirect_to (new_user_session_path )
+		end
 	end
+	
 	describe 'logged in user with an existing Todo List' do
 		before :each do
 			u = create(:user)
