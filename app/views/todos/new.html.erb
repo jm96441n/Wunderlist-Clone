@@ -6,9 +6,9 @@
 	<%= f.text_field :name %>
 
 	<%= f.label :description %>
-	<%= f.textarea :description %>
+	<%= f.text_area :description %>
 	
-	<%= f.hidden_field :todolist_id, value: session[:todo_list] %>
+	<%= f.hidden_field :todo_list_id, value: session[:todo_list] %>
 	
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	
