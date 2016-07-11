@@ -6,6 +6,7 @@
 		<p>Description: <%= "#{todo.description}" %></p>
 		<p>Status: <%= "#{todo.status}" %></p>
 		<p>Created At: <%= "#{todo.created_at}" %></p>
+		<%= link_to 'Edit', edit_todo_path("#{todo.id}") %>
 	<% end %>
 	
 <div>
