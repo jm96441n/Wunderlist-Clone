@@ -39,4 +39,41 @@ feature "EditTodoItem", :type => :feature do
 		expect( todo.description ).to eq("And now for something completely different")
 	end
 
+	it 'should allow a logged in user with a list to edit the status of the item to In Progress' do
+		u = create(:user)
+		login_as u
+		t_l = create(:todo_list, user_id: u.id)
+		todo = create(:todo, user_id: u.id, todo_list_id: t_l.id)
+
+		visit edit_todo_path(todo)
+
+		within "#edit_todo_#{todo.id}" do
+			choose("todo_status_in_progress")
+			find(:xpath, "//input[@id='todo_todo_list_id']").set t_l.id
+		end
+
+		click_button "Update Todo"
+
+		todo = Todo.find(todo.id)
+		expect( todo.status ).to eq("In Progress")
+	end
+	it 'should allow a logged in user with a list to edit the status of the item to In Progress' do
+		u = create(:user)
+		login_as u
+		t_l = create(:todo_list, user_id: u.id)
+		todo = create(:todo, user_id: u.id, todo_list_id: t_l.id)
+
+		visit edit_todo_path(todo)
+
+		within "#edit_todo_#{todo.id}" do
+			choose("todo_status_completed")
+			find(:xpath, "//input[@id='todo_todo_list_id']").set t_l.id
+		end
+
+		click_button "Update Todo"
+
+		todo = Todo.find(todo.id)
+		expect( todo.status ).to eq("Completed")
+	end
+
 end
