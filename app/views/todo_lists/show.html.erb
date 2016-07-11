@@ -2,7 +2,11 @@
 
 <p>Todo's</p>
 	<% @todo_list.todos.each do |todo| %>
-		<li><%= link_to "#{todo.name}", todo_path %></li>
+		<li id=<%= "#{todo.id}" %>>Task: <%= "#{todo.name}" %></li>
+		<p>Description: <%= "#{todo.description}" %></p>
+		<p>Status: <%= "#{todo.status}" %></p>
+		<p>Created At: <%= "#{todo.created_at}" %></p>
+		<%= link_to 'Edit', edit_todo_path("#{todo.id}") %>
 	<% end %>
 	
 <div>
