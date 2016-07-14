@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :todo_lists
   resources :todos, except: [:index,:show]
   devise_for :users, :controllers => { 
-    :omniauth_callbacks => "users/omniauth_callbacks",
+    omniauth_callbacks: "users/omniauth_callbacks",
     registrations: 'registrations'
    }
 

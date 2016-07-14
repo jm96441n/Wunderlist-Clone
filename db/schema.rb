@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705232813) do
+ActiveRecord::Schema.define(version: 20160713203758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20160705232813) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  create_table "reminders", force: :cascade do |t|
+    t.datetime "time",    null: false
+    t.integer  "todo_id", null: false
+  end
+
+  add_index "reminders", ["todo_id"], name: "index_reminders_on_todo_id", using: :btree
 
   create_table "todo_lists", force: :cascade do |t|
     t.string   "name",       null: false
@@ -38,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160705232813) do
     t.integer  "user_id",      null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "priority"
+    t.datetime "due_date"
   end
 
   create_table "users", force: :cascade do |t|
