@@ -3,6 +3,7 @@ FactoryGirl.define do
 		name "Test Todo"
 		description "This is a test todo item"
 		status "Not Started"
+		priority "Low"
 		association :todo_list_id, factory: :todo_list
 		association :user_id, factory: :user
 	end

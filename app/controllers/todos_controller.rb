@@ -1,5 +1,8 @@
 class TodosController < ApplicationController
 
+	def show
+		@todo = Todo.includes(:reminders).find(params[:id])
+	end
 
 	def new
 		@todo = Todo.new

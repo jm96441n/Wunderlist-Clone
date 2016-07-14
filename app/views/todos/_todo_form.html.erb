@@ -14,6 +14,13 @@
 	<%= f.radio_button :status, 'Completed' %>
 	<%= label :completed, 'Completed' %>
 
+	<%= f.radio_button :priority, 'Low', :checked => true %>
+	<%= label :low, "Low" %>
+	<%= f.radio_button :priority, 'Medium' %>
+	<%= label :medium, 'Medium' %>
+	<%= f.radio_button :priority, 'High' %>
+	<%= label :high, 'High' %>
+
 	<%= f.hidden_field :todo_list_id, value: session[:todo_list] %>
 	
 	<%= f.hidden_field :user_id, value: current_user.id %>

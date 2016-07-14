@@ -29,6 +29,13 @@ RSpec.describe TodosController, :type => :controller do
 			get :edit, id: todo.id
 			expect( response ).to render_template( :edit )
 		end
+		it 'Show: should allow a user to view the show page of a todo associated with a list' do
+			u = create(:user)
+			t_l = create(:todo_list, user_id: u.id)
+			todo = create(:todo, todo_list_id: t_l.id, user_id: u.id)
+			get :show, id: todo.id
+			expect( response ).to render_template( :show )
+		end
 	end
 
 end

@@ -1,0 +1,13 @@
+<h1><%= @todo.name %></h1>
+
+<p>Description: <%= @todo.description %></p>
+
+<p>Status: <%= @todo.status %></p>
+
+<p> Created on: <%= @todo.created_at %> </p>
+
+<% if @todo.created_at != @todo.updated_at %>
+	<p>Updated at:<%= @todo.updated_at %></p>
+<% end %>
+
+<p></p>
