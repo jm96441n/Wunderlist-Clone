@@ -12,6 +12,7 @@ feature "AddNewTodos", :type => :feature do
 		within "#new_todo" do
 			fill_in "todo_name", with: "New Todo"
 			fill_in "todo_description", with: "Test todo for testing"
+			choose("todo_priority_low")
 			find(:xpath, "//input[@id='todo_todo_list_id']").set t_l.id
 		end
 
@@ -34,6 +35,7 @@ feature "AddNewTodos", :type => :feature do
 			fill_in "todo_name", with: "New Todo"
 			fill_in "todo_description", with: "Test todo for testing"
 			choose("todo_status_in_progress")
+			choose("todo_priority_low")
 			find(:xpath, "//input[@id='todo_todo_list_id']").set t_l.id
 		end
 
@@ -56,6 +58,7 @@ feature "AddNewTodos", :type => :feature do
 			fill_in "todo_name", with: "New Todo"
 			fill_in "todo_description", with: "Test todo for testing"
 			choose("todo_status_completed")
+			choose("todo_priority_low")
 			find(:xpath, "//input[@id='todo_todo_list_id']").set t_l.id
 		end
 
@@ -66,6 +69,44 @@ feature "AddNewTodos", :type => :feature do
 		expect(Todo.first.status).to eq("Completed")
 		expect(Todo.first.user_id).to eq(u.id)
 	end
+
+	it 'should allow a logged in user to add a todo with a low priority to an existing list' do
+		u = create(:user)
+		login_as u
+		t_l = create( :todo_list , user_id: u.id)
+		visit new_todo_path
+
+		within "#new_todo" do
+			fill_in "todo_name", with: "New Todo"
+			fill_in "todo_description", with: "Test todo for testing"
+			choose("todo_priority_low")
+			find(:xpath, "//input[@id='todo_todo_list_id']").set t_l.id
+		end
+		click_link_or_button "Create Todo"
+
+		expect( Todo.count ).to eq(1)
+		expect( Todo.first.priority ).to eq( "Low" )
+	end
+
+	it 'should allow a logged in user to add a new todo with a priority of medium' do
+		u = create(:user)
+		login_as u
+		t_l = create( :todo_list, user_id: u.id)
+		visit new_todo_path
+
+		within "#new_todo" do
+			fill_in "todo_name", with: "New Todo"
+			fill_in "todo_description", with: "Test todo for testing"
+			choose("todo_priority_medium")
+			find(:xpath, "//input[@id='todo_todo_list_id']").set t_l.id
+		end
+		click_link_or_button "Create Todo"
+
+		expect( Todo.count ).to eq(1)
+		expect( Todo.first.priority ).to eq("Medium")
+	end
+
+
 
 
 end

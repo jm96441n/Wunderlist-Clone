@@ -32,7 +32,7 @@ class TodosController < ApplicationController
 	private
 
 	def todo_params
-		params[:todo].permit(:name,:description,:user_id,:todo_list_id, :status)
+		params[:todo].permit(:name,:description,:user_id,:todo_list_id, :status, :priority)
 	end
 
 end
