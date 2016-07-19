@@ -4,7 +4,9 @@ var ContentContainer = React.createClass({
       lists: [],
       content: this.props.content,
       selectList: this.props.selectList,
-      selectListName: ''
+      selectListName: '',
+      todo: '',
+      selectedTodo: ''
     }
   },
   componentWillReceiveProps(nextProps){
@@ -14,7 +16,7 @@ var ContentContainer = React.createClass({
       selectList: nextProps.selectList
     })
   },
-  handleClick(id){
+  handleListClick(id){
     this.state.lists.filter((list)=>{
       if(list.id == id){
         this.setState({selectListName: list.name})
@@ -22,6 +24,16 @@ var ContentContainer = React.createClass({
     })
     this.props.loadListFromServer(id)
   },
+  handleTodoClick(id){
+    this.state.selectList.filter((todo)=>{
+      if(todo.id == id){
+        this.setState({
+          selectedTodo: todo,
+          content: 'todo'
+        })
+      }
+    })
+  }
   render(){
     var self = this
     var listNodes = this.props.lists.map((list) => {
@@ -30,7 +42,7 @@ var ContentContainer = React.createClass({
           <List
             list={list.name}
             id={list.id}
-            handleClick={this.handleClick}
+            handleClick={this.handleListClick}
             />
         </li>
       )
@@ -53,6 +65,13 @@ var ContentContainer = React.createClass({
             />
         </div>
       )
+      else if(this.state.content == 'todo'){
+        return(
+          <div>
+            <Todo data={this.state.selectedTodo}/>
+          </div>
+        )
+      }
     }
   }
 })
