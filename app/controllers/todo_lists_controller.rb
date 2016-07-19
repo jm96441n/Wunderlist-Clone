@@ -21,6 +21,8 @@ class TodoListsController < ApplicationController
 	def show
 		@todo_list = TodoList.includes(:todos).find(params[:id])
 		session[:todo_list] = @todo_list.id
+		@todos = @todo_list.todos
+		render json: @todos
 	end
 
 	def edit

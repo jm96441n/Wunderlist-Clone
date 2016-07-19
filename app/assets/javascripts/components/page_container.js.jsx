@@ -3,7 +3,8 @@ var PageContainer = React.createClass({
     return {
       todo_lists: [],
       content: 'lists',
-      selectList: ''
+      selectList: []
+
     }
   },
   loadListsFromServer(){
@@ -27,7 +28,7 @@ var PageContainer = React.createClass({
       method: 'GET',
       dataType: 'json',
       url: url,
-      success: (list) =>{
+      success: (list) => {
         this.setState({
           content: 'list',
           selectList: list
