@@ -38,6 +38,7 @@ class TodoListsController < ApplicationController
 	end
 
 	def react
+		@user = current_user
 	end
 
 private

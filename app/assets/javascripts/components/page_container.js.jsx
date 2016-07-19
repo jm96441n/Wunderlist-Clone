@@ -1,7 +1,9 @@
 var PageContainer = React.createClass({
   getInitialState(){
     return {
-      todo_lists: []
+      todo_lists: [],
+      content: 'lists',
+      selectList: ''
     }
   },
   loadListsFromServer(){
@@ -19,12 +21,38 @@ var PageContainer = React.createClass({
       }.bind(this)
     });
   },
+  loadListFromServer: (id) => {
+    var url = '/todo_lists/'+id
+    $.ajax({
+      method: 'GET',
+      dataType: 'json',
+      url: url,
+      success: (list) =>{
+        this.setState({
+          content: 'list',
+          selectList: list
+        })
+      }.bind(this),
+      error: (xhr, status, err) => {
+        console.error(status, err.toString())
+      }.bind(this)
+    })
+  },
   componentWillMount(){
     this.loadListsFromServer();
   },
   render(){
     return(
-      <ContentContainer lists={this.state.todo_lists}/>
+      <div>
+        <TopNav user={this.props.user}/>
+        <ContentContainer
+          lists={this.state.todo_lists}
+          user={this.state.user}
+          content={this.state.content}
+          selectList={this.state.selectList}
+          loadListFromServer={this.loadListFromServer()}
+          />
+      </div>
     )
   }
 });

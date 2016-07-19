@@ -1,22 +1,51 @@
 var ContentContainer = React.createClass({
   getInitialState(){
-    return {lists: []}
+    return {
+      lists: [],
+      content: 'lists',
+      selectList: '',
+    }
   },
   componentWillReceiveProps(nextProps){
-    this.setState({lists: nextProps.lists})
+    this.setState({
+      lists: nextProps.lists,
+      content: nextProps.content,
+      selectList: nextProps.selectList
+    })
+  },
+  handleClick: (id) => {
+    this.props.loadListFromServer(id)
   },
   render(){
-    var nodes = this.props.lists.map((list) => {
+    var self = this
+    var listNodes = this.props.lists.map((list) => {
       return(
-        <li>{list.name}</li>
+        <li key={list.id}>
+          <List
+            id={list.id}
+            list={list.name}
+            onClick={self.handleClick()}
+            />
+        </li>
       )
     })
-    return(
-      <div>
-        <ul>
-          {nodes}
-        </ul>
-      </div>
-    )
+    if(this.state.content == 'lists'){
+      return(
+        <div>
+          <ul>
+            {listNodes}
+          </ul>
+        </div>
+      )
+    }
+    else if(content == 'list'){
+      return(
+        <div>
+          <TodoList
+            list={this.state.list}
+            />
+        </div>
+      )
+    }
   }
 })
