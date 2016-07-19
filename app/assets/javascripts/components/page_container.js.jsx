@@ -21,7 +21,7 @@ var PageContainer = React.createClass({
       }.bind(this)
     });
   },
-  loadListFromServer: (id) => {
+  loadListFromServer(id){
     var url = '/todo_lists/'+id
     $.ajax({
       method: 'GET',
@@ -50,7 +50,7 @@ var PageContainer = React.createClass({
           user={this.state.user}
           content={this.state.content}
           selectList={this.state.selectList}
-          loadListFromServer={this.loadListFromServer()}
+          loadListFromServer={this.loadListFromServer}
           />
       </div>
     )
