@@ -1,4 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
+	respond_to :json
+
+	def create
+			@user = User.create(sign_up_params)
+			redirect_to react_path
+	end
+
+
+
+
 
 	private
 

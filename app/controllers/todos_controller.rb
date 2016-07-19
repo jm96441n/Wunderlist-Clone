@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-
+	respond_to :json
 	def show
 		@todo = Todo.includes(:reminders).find(params[:id])
 	end
@@ -28,7 +28,7 @@ class TodosController < ApplicationController
 
 	def destroy
 	end
-	
+
 	private
 
 	def todo_params

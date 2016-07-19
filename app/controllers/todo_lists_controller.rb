@@ -1,7 +1,10 @@
 class TodoListsController < ApplicationController
 	before_filter :authenticate_user!
+	respond_to :json
+
 	def index
 		@lists = TodoList.where("user_id = ?", current_user.id)
+		render json: @lists
 	end
 
 	def new
@@ -17,7 +20,7 @@ class TodoListsController < ApplicationController
 
 	def show
 		@todo_list = TodoList.includes(:todos).find(params[:id])
-		session[:todo_list] = @todo_list.id		
+		session[:todo_list] = @todo_list.id
 	end
 
 	def edit
@@ -32,6 +35,9 @@ class TodoListsController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	def react
 	end
 
 private

@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'todo_lists#index'
+  root "todo_lists#react"
   resources :todo_lists
   resources :todos, except: [:index]
-  devise_for :users, :controllers => { 
+  devise_for :users, :controllers => {
     omniauth_callbacks: "users/omniauth_callbacks",
     registrations: 'registrations'
    }
+   get "todo_lists/react" => "todo_lists#react", as: "react"
    resources :reminders, except: [:index]
 
   # root to: "users#new"
