@@ -39,19 +39,29 @@ var PageContainer = React.createClass({
       }.bind(this)
     })
   },
+  handleHomeClick(){
+    this.setState({
+      content: 'lists',
+      selectList: []
+    })
+  },
   componentWillMount(){
     this.loadListsFromServer();
   },
   render(){
     return(
       <div>
-        <TopNav user={this.props.user}/>
+        <TopNav
+          user={this.props.user}
+          handleHomeClick={this.handleHomeClick}
+          />
         <ContentContainer
           lists={this.state.todo_lists}
           user={this.state.user}
           content={this.state.content}
           selectList={this.state.selectList}
           loadListFromServer={this.loadListFromServer}
+          className="container"
           />
       </div>
     )

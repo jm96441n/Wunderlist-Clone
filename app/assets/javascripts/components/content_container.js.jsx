@@ -33,7 +33,7 @@ var ContentContainer = React.createClass({
         })
       }
     })
-  }
+  },
   render(){
     var self = this
     var listNodes = this.props.lists.map((list) => {
@@ -62,16 +62,17 @@ var ContentContainer = React.createClass({
           <TodoList
             name={this.state.selectListName}
             list={this.state.selectList}
+            handleTodoClick={this.handleTodoClick}
             />
         </div>
-      )
+        )
+      }
       else if(this.state.content == 'todo'){
         return(
           <div>
-            <Todo data={this.state.selectedTodo}/>
+            <Todo todo={this.state.selectedTodo}/>
           </div>
         )
       }
     }
-  }
 })
