@@ -29,26 +29,19 @@ var ContentContainer = React.createClass({
     var self = this
     if(this.state.content == ''){
       return(
-        <div>
+        <div className="content">
           <p>Todo's are here</p>
         </div>
       )
     }
     else if(this.state.content == 'list'){
       return(
-        <div>
+        <div className="content">
           <TodoList
             list={this.state.selectList}
             handleTodoClick={this.handleTodoClick}
             />
         </div>
-        )
-      }
-      else if(this.state.content == 'todo'){
-        return(
-          <div>
-            <Todo todo={this.state.selectedTodo}/>
-          </div>
         )
       }
     }

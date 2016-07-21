@@ -18,9 +18,9 @@ var TodoList = React.createClass({
     return(
       <div>
         <p>{this.props.list.name}</p>
-        <ul>
-          {todoNodes}
-        </ul>
+          <ul>
+            {todoNodes}
+          </ul>
       </div>
     )
   }

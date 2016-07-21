@@ -1,3 +1,20 @@
 @import "materialize/components/color";
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
+
+
+.userbutton {
+  margin-top: 3rem;
+}
+.todos {
+  width: 60%;
+  margin-left: 15%;
+}
+
+.content {
+  background-color: #90caf9;
+}
+
+.row {
+  margin-bottom: 0;
+}

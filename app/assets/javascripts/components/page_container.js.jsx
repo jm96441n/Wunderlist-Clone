@@ -51,21 +51,26 @@ var PageContainer = React.createClass({
   render(){
     return(
       <div>
-        <div className="row">
+        <div className='row'>
         <TopNav
           user={this.props.user}
-          className="col s12 m12 l12"
+          className='col l12 m12 s12'
           />
+          <div className="divider"></div>
         </div>
         <div className="row">
-          <div className="col s2 m2 l2">
+          <div
+            className="col s2 m2 l2"
+            >
             <LeftNav
               lists={this.state.todo_lists}
               handleHomeClick={this.handleHomeClick}
               loadListFromServer={this.loadListFromServer}
             />
           </div>
-          <div className="col s8 m8 l8">
+          <div
+            className="col s10 m10 l10 content"
+            >
             <ContentContainer
               user={this.state.user}
               content={this.state.content}
