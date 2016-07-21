@@ -6,7 +6,7 @@ var List = React.createClass({
   render(){
     var self = this
     return(
-      <div>
+      <div className='center-align'>
         <a
           href='#'
           onClick={this.handleClick}

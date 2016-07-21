@@ -7,8 +7,8 @@ var TodoList = React.createClass({
     var todoNodes = this.props.list.map((todo) => {
       return(
         <li key={todo.id}>
-          <TodoNode
-            todo={todo.name}
+          <Todo
+            todo={todo}
             id={todo.id}
             handleClick={this.handleTodoClick}
             />
@@ -17,7 +17,7 @@ var TodoList = React.createClass({
     })
     return(
       <div>
-        <p>{this.props.name}</p>
+        <p>{this.props.list.name}</p>
         <ul>
           {todoNodes}
         </ul>
