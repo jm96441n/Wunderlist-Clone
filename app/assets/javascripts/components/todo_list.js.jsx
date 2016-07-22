@@ -1,6 +1,6 @@
 var TodoList = React.createClass({
-  handleTodoClick(id){
-    this.props.handleTodoClick(id)
+  handleEditClick(id){
+    this.props.handleEditClick(id)
   },
 
   render(){
@@ -10,7 +10,7 @@ var TodoList = React.createClass({
           <Todo
             todo={todo}
             id={todo.id}
-            handleClick={this.handleTodoClick}
+            handleEditClick={this.handleEditClick}
             />
         </li>
       )

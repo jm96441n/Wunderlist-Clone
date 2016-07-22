@@ -3,8 +3,9 @@ var PageContainer = React.createClass({
     return {
       todo_lists: [],
       content: '',
-      selectList: []
-
+      selectList: [],
+      user: this.props.info.user,
+      todo: '',
     }
   },
   loadListsFromServer(){
@@ -45,22 +46,33 @@ var PageContainer = React.createClass({
       selectList: []
     })
   },
+  handleEditClick(id){
+    this.state.selectList.filter((todo)=>{
+      if(todo.id == id){
+        this.setState({
+          todo: todo,
+          content: 'edit'
+         })
+      }
+    })
+  },
   componentWillMount(){
     this.loadListsFromServer();
   },
   render(){
     return(
-      <div>
+      <div className="page-containter">
         <div className='row'>
         <TopNav
-          user={this.props.user}
+          user={this.state.user}
           className='col l12 m12 s12'
           />
           <div className="divider"></div>
         </div>
-        <div className="row">
+        <div className="row content-row">
           <div
-            className="col s2 m2 l2"
+            className="col s2 m2 l2 content"
+            id="leftnav"
             >
             <LeftNav
               lists={this.state.todo_lists}
@@ -69,12 +81,15 @@ var PageContainer = React.createClass({
             />
           </div>
           <div
-            className="col s10 m10 l10 content"
+            className="col s10 m10 l10 content blue lighten-3 content"
             >
             <ContentContainer
               user={this.state.user}
               content={this.state.content}
               selectList={this.state.selectList}
+              form={this.props.info.form}
+              handleEditClick={this.handleEditClick}
+              todo={this.state.todo}
               />
           </div>
         </div>

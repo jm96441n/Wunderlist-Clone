@@ -132,6 +132,8 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    normalize-scss (5.0.3)
+      sass (~> 3.3)
     notiffany (0.1.0)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -246,6 +248,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    support-for (1.0.6)
+      sass (~> 3.3)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -283,6 +287,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   materialize-sass
+  normalize-scss
   omniauth
   omniauth-facebook
   pg (~> 0.15)
@@ -295,6 +300,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sprockets-rails
+  support-for (~> 1.0)
   therubyracer
   uglifier (>= 1.3.0)
   vcr

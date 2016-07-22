@@ -40,7 +40,14 @@ class TodoListsController < ApplicationController
 	end
 
 	def react
-		@user = current_user
+		@info = {
+		 user: current_user,
+		 :form => {
+			 :action => todos_path,
+			 :csrf_param => request_forgery_protection_token,
+			 :csrf_token => form_authenticity_token
+		 }
+	 }
 	end
 
 private

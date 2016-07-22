@@ -1,4 +1,8 @@
 var Todo = React.createClass({
+  handleEditClick(e){
+    e.preventDefault();
+    this.props.handleEditClick(this.props.todo.id)
+  },
   render(){
     return(
       <div className="card-panel hoverable todos">
@@ -7,6 +11,8 @@ var Todo = React.createClass({
         <p>Status: {this.props.todo.status}</p>
         <p>Description: {this.props.todo.description}</p>
         <p>Due Date: {this.props.todo.due_date}</p>
+        <div className="divider"></div>
+        <a href="#" handleClick={this.handleEditClick}>Edit</a>
       </div>
     )
   }
