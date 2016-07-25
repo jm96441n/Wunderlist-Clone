@@ -27,6 +27,7 @@ gem 'normalize-scss'
 gem 'support-for', '~> 1.0'
 gem 'sprockets-rails'
 gem 'react-rails'
+gem "font-awesome-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

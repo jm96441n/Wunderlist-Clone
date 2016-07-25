@@ -3,6 +3,12 @@
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 
+$height: 40px;
+$spacing: 10px;
+$select-color: #2875C7;
+$font-size: 14px;
+$border-color: #DDD;
+
 
 .userbutton {
   margin-top: 3rem;
@@ -40,5 +46,30 @@ body, html{
 }
 
 .dropdown-container {
-  
+  & .show {
+    @mixin transform(scale(1,1));
+  }
+  $icon-width: 14px;
+  .dropdown-display{
+    float: left;
+    width: 100%;
+    background: white;
+    height: $height;
+    cursor: pointer;
+    border: solid 1px $border-color;
+    @mixin border-box;
+    *{
+      float: left;
+      height: 100%;
+      @mixin vertical-center($height);
+    }
+    span {
+      font-size: $font-size;
+      width: 100%;
+      position: relative;
+      @mixin border-box;
+      padding-right: $icon-width + $spacing * 2;
+      padding-left: $spacing;
+    }
+  }
 }
