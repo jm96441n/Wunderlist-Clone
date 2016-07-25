@@ -12,7 +12,7 @@ var Todo = React.createClass({
         <p>Description: {this.props.todo.description}</p>
         <p>Due Date: {this.props.todo.due_date}</p>
         <div className="divider"></div>
-        <a href="#" handleClick={this.handleEditClick}>Edit</a>
+        <a href="#" onClick={this.handleEditClick}>Edit</a>
       </div>
     )
   }

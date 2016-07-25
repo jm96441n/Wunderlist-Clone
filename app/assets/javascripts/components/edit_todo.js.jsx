@@ -1,15 +1,21 @@
 var EditTodo = React.createClass({
-
+  getInitialState(){
+    return {priority: this.props.todo.priority}
+  },
+  handlePriorityChange(priority){
+    this.setState({priority: priority})
+  },
   render(){
+    var PRIORITY_OPTIONS = ["Low","Medium","High"]
     return(
       // <form ref="editForm" action={this.props.form.action} method="POST" >
-      //   <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf} />
-      //   <span>Low</span><input ref="priority" type="radio" name="todo[priority]" value="Low"/>
-      //   <span>Medium</span><input ref="priority" type="radio" name="todo[priority]" value="Medium"/>
-      //   <span>High</span><input ref="priority" type="radio" name="todo[priority]" value="High"/>
-      //
+      //   <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf}/>
+        <Dropdown
+              selectedItem={this.handlePriorityChange}
+              selected={this.state.priority}
+              list={PRIORITY_OPTIONS} />
+
       // </form>
-      <p> Here's where the form should be</p>
     )
   }
 })

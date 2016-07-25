@@ -39,12 +39,14 @@ var ContentContainer = React.createClass({
         )
       }
     else if(this.state.content == 'edit'){
-      <div className="content">
-        <EditTodo
-          todo={this.props.todo}
-          form={this.props.form}
-          />
-      </div>
+      return(
+        <div className="content">
+          <EditTodo
+            todo={this.props.todo}
+            form={this.props.form}
+            />
+        </div>
+      )
     }
   }
 })
