@@ -19,8 +19,8 @@ var ContentContainer = React.createClass({
   handleEditClick(id){
     this.props.handleEditClick(id)
   },
-  handleAfterEdit(){
-    this.props.handleAfterEdit();
+  handleAfterEdit(todo){
+    this.props.handleAfterEdit(todo);
   },
   render(){
     var self = this

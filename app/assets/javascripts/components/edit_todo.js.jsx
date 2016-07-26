@@ -27,7 +27,7 @@ var EditTodo = React.createClass({
       method: 'PUT',
       data: this.state,
       success: (response) => {
-        this.props.handleAfterEdit();
+        this.props.handleAfterEdit(response);
       },
       error: (xhr,status, err) => {
         console.error(this.props.url,status,err.toString())
@@ -39,7 +39,7 @@ var EditTodo = React.createClass({
     var STATUS_OPTIONS = ["Not Started","In Progress","Completed"]
     return(
       <div className="card-panel edit_form">
-        <form ref="editForm" action={this.props.form.action} method="PUT" onSubmit={this.handleSubmit}>
+        <form ref="editForm" action={this.props.form.action} method="POST" onSubmit={this.handleSubmit}>
           <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf}/>
           <p>Edit: {this.props.todo.name}</p>
 

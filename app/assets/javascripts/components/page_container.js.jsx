@@ -4,6 +4,7 @@ var PageContainer = React.createClass({
       todo_lists: [],
       content: '',
       selectList: [],
+      selectListId: '',
       user: this.props.info.user,
       todo: '',
     }
@@ -32,7 +33,8 @@ var PageContainer = React.createClass({
       success: (list) => {
         this.setState({
           content: 'list',
-          selectList: list
+          selectList: list,
+          selectListId: id
         })
       }.bind(this),
       error: (xhr, status, err) => {
@@ -57,7 +59,7 @@ var PageContainer = React.createClass({
     })
   },
   handleAfterEdit(){
-    this.setState({content: 'list'})
+    this.loadListFromServer(this.state.selectListId)
   },
   componentWillMount(){
     this.loadListsFromServer();

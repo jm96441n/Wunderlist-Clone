@@ -23,7 +23,7 @@ class TodosController < ApplicationController
 		@todo = Todo.find(params[:id])
 		if request.xhr?
 			if @todo.update(todo_params)
-				render status: :ok
+				render json: @todo
 			else
 
 			end
