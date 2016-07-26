@@ -56,13 +56,16 @@ var PageContainer = React.createClass({
       }
     })
   },
+  handleAfterEdit(){
+    this.setState({content: 'list'})
+  },
   componentWillMount(){
     this.loadListsFromServer();
   },
   render(){
     return(
       <div className="page-containter">
-        <div className='row'>
+        <div className='row teal lighten-4'>
         <TopNav
           user={this.state.user}
           className='col l12 m12 s12'
@@ -71,7 +74,7 @@ var PageContainer = React.createClass({
         </div>
         <div className="row content-row">
           <div
-            className="col s2 m2 l2 content"
+            className="col s2 m2 l2 content deep-purple lighten-3"
             id="leftnav"
             >
             <LeftNav
@@ -90,6 +93,7 @@ var PageContainer = React.createClass({
               form={this.props.info.form}
               handleEditClick={this.handleEditClick}
               todo={this.state.todo}
+              handleAfterEdit={this.handleAfterEdit}
               />
           </div>
         </div>

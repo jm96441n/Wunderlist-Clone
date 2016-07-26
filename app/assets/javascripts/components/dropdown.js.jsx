@@ -1,37 +1,37 @@
 var Dropdown = React.createClass({
     getInitialState(){
-      return {listVisible: false}
+      return(
+        {selected: this.props.selected || ''}
+      )
     },
-    selectedItem(item){
-      this.props.selectedItem(item)
+    handleSelection(event){
+      var item = event.target.value
+      this.props.handleSelection(item);
+      this.setState({selected: item})
     },
-    show(){
-      this.setState({listVisible: true})
-      document.addEventListenter("click", this.hide)
-    },
-    hide(){
-      this.setState({listVisible: false})
-      document.removeEventListener("click", this.hide)
+    componentDidMount() {
+      var element = ReactDOM.findDOMNode(this.refs.dropdown)
+      $(element).on('change',this.handleSelection);
+      $(element).ready(function() {
+        $('select').material_select();
+      });
     },
     render(){
+      var self = this
       var i = 0
-      var listNodes = this.props.list.map((item)=>{
+      var listNodes = self.props.list.map((item)=>{
         i += 1
         return(
-          <div key={i} onClick={this.selectedItem.bind(null, item)}>
-            <span>{item}</span>
-          </div>
+        <option key={i} value={item}>{item}</option>
         )
       })
       return(
-        <div className={"dropdown-container" + (this.state.listVisible ? " show" : "")}>
-          <div className={"dropdown-display" + (this.state.listVisible ? " clicked" : "")} onClick={this.show}>
-            <span>{this.props.selected}</span>
-          </div>
-          <div className="dropdown-list">
-            {listNodes}
-          </div>
-        </div>
+        <div class="input-field col s12">
+         <select ref="dropdown" value={self.state.selected} onChange={this.handleSelection}>
+            <option value="" disabled>Choose One</option>
+           {listNodes}
+         </select>
+       </div>
       )
     }
 

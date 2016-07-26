@@ -19,6 +19,9 @@ var ContentContainer = React.createClass({
   handleEditClick(id){
     this.props.handleEditClick(id)
   },
+  handleAfterEdit(){
+    this.props.handleAfterEdit();
+  },
   render(){
     var self = this
     if(this.state.content == ''){
@@ -44,6 +47,7 @@ var ContentContainer = React.createClass({
           <EditTodo
             todo={this.props.todo}
             form={this.props.form}
+            handleAfterEdit={this.handleAfterEdit}
             />
         </div>
       )

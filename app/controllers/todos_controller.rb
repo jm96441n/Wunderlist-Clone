@@ -21,7 +21,13 @@ class TodosController < ApplicationController
 
 	def update
 		@todo = Todo.find(params[:id])
-		if @todo.update(todo_params)
+		if request.xhr?
+			if @todo.update(todo_params)
+				render status: :ok
+			else
+
+			end
+		else
 			redirect_to action: 'show', controller: "todo_lists", id: @todo.todo_list_id
 		end
 	end
@@ -32,7 +38,7 @@ class TodosController < ApplicationController
 	private
 
 	def todo_params
-		params[:todo].permit(:name,:description,:user_id,:todo_list_id, :status, :priority)
+		params.permit(:name,:description,:user_id,:todo_list_id, :status, :priority)
 	end
 
 end
